@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Story For You ♡</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    font-family:Georgia,"Times New Roman",serif;
+    color:#685158;
+
+    background:
+        radial-gradient(circle at 10% 10%,#ffdce6 0%,transparent 28%),
+        radial-gradient(circle at 90% 90%,#ffe8df 0%,transparent 30%),
+        linear-gradient(135deg,#fffafa,#fff0f5,#fff8f3);
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart{
+    position:fixed;
+    bottom:-30px;
+    z-index:0;
+    pointer-events:none;
+
+    color:#df91a1;
+
+    animation:floatHeart linear forwards;
+}
+
+@keyframes floatHeart{
+
+    0%{
+        transform:translateY(0) scale(.6);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.55;
+    }
+
+    100%{
+        transform:translateY(-110vh) scale(1.2) rotate(25deg);
+        opacity:0;
+    }
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress{
+    position:fixed;
+    top:16px;
+    left:50%;
+    transform:translateX(-50%);
+
+    z-index:1000;
+
+    font-family:Arial,sans-serif;
+    font-size:10px;
+    letter-spacing:4px;
+
+    color:#b47c86;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page{
+    display:none;
+
+    position:relative;
+
+    width:100%;
+    min-height:100vh;
+
+    padding:70px 22px;
+
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    overflow:hidden;
+}
+
+.page.active{
+    display:flex;
+
+    animation:pageIn .7s ease;
+}
+
+@keyframes pageIn{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* dekorasi */
+
+.page::before{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    background:rgba(255,210,222,.45);
+
+    top:-150px;
+    left:-120px;
+
+    z-index:-1;
+}
+
+.page::after{
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    border-radius:50%;
+
+    background:rgba(250,225,213,.5);
+
+    right:-120px;
+    bottom:-130px;
+
+    z-index:-1;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.small-title{
+    margin-bottom:18px;
+
+    font-family:Arial,sans-serif;
+    font-size:10px;
+    letter-spacing:4px;
+
+    color:#b47c86;
+}
+
+h1{
+    margin-bottom:18px;
+
+    font-size:clamp(35px,9vw,55px);
+
+    color:#a95f6d;
+
+    text-shadow:0 5px 20px rgba(180,90,110,.15);
+}
+
+h2{
+    max-width:650px;
+
+    margin-bottom:24px;
+
+    font-size:clamp(25px,6vw,36px);
+    line-height:1.35;
+
+    color:#7d555d;
+}
+
+h3{
+    margin-bottom:14px;
+    color:#a25e6a;
+}
+
+p{
+    max-width:620px;
+
+    margin-bottom:17px;
+
+    font-size:17px;
+    line-height:1.85;
+}
+
+.highlight{
+    color:#a65363;
+    font-weight:bold;
+}
+
+.signature{
+    color:#9c747a;
+    font-style:italic;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button{
+    position:relative;
+    z-index:20;
+
+    margin-top:15px;
+
+    padding:14px 27px;
+
+    border:none;
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#e3a0ab,#c87584);
+
+    color:white;
+
+    font-family:Arial,sans-serif;
+    font-size:14px;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 25px rgba(160,80,95,.18);
+
+    transition:.3s ease;
+}
+
+button:hover{
+    transform:translateY(-4px);
+}
+
+button:active{
+    transform:scale(.94);
+}
+
+.back{
+    background:rgba(255,255,255,.7);
+    color:#a46771;
+
+    border:1px solid #efd4d9;
+
+    box-shadow:0 6px 18px rgba(150,80,90,.08);
+
+    font-size:12px;
+}
+
+
+/* =========================
+   FIRST PAGE
+========================= */
+
+.envelope-icon{
+    font-size:80px;
+
+    margin-bottom:20px;
+
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+
+/* =========================
+   BIG HEART
+========================= */
+
+.big-heart{
+    font-size:75px;
+
+    color:#d98595;
+
+    margin-bottom:18px;
+
+    animation:heartbeat 1.8s infinite;
+}
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+
+    width:100%;
+    max-width:850px;
+
+    margin:15px 0;
+
+    flex-wrap:wrap;
+}
+
+.card{
+    width:220px;
+
+    padding:25px 18px;
+
+    border:1px solid #efd5da;
+    border-radius:23px;
+
+    background:rgba(255,255,255,.72);
+
+    box-shadow:0 15px 35px rgba(120,70,80,.08);
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px) rotate(-1deg);
+}
+
+.card span{
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:35px;
+}
+
+.card h3{
+    font-family:Arial,sans-serif;
+    font-size:15px;
+    letter-spacing:2px;
+}
+
+.card p{
+    margin:0;
+
+    font-size:14px;
+    line-height:1.7;
+}
+
+
+/* =========================
+   MAY I
+========================= */
+
+.may-buttons{
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:15px;
+
+    width:100%;
+    min-height:180px;
+}
+
+.tease{
+    z-index:30;
+}
+
+.understand{
+    z-index:25;
+
+    transition:.4s cubic-bezier(.22,1,.36,1);
+}
+
+.plea{
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    width:90%;
+
+    transform:translate(-50%,-50%) scale(.5);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    color:#bd6171;
+
+    font-size:clamp(25px,7vw,42px);
+    font-weight:bold;
+
+    text-shadow:0 4px 15px rgba(180,80,100,.18);
+}
+
+.plea.show{
+    animation:plea .9s ease forwards;
+}
+
+@keyframes plea{
+
+    0%{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(.5) rotate(-5deg);
+    }
+
+    25%{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(1.1) rotate(3deg);
+    }
+
+    70%{
+        opacity:1;
+        transform:translate(-50%,-55%) scale(1) rotate(-2deg);
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(-50%,-90%) scale(.8);
+    }
+}
+
+
+/* =========================
+   KAPAL
+========================= */
+
+.boat{
+    font-size:90px;
+
+    margin-bottom:20px;
+
+    animation:sail 4s ease-in-out infinite;
+}
+
+@keyframes sail{
+
+    0%,100%{
+        transform:translateX(-18px) rotate(-3deg);
+    }
+
+    50%{
+        transform:translateX(18px) rotate(3deg);
+    }
+}
+
+
+/* =========================
+   FINAL PAGE
+========================= */
+
+.final-page{
+    background:
+        radial-gradient(circle at center,#fffdfd,#fff0f3,#fbe7e8);
+}
+
+.final-page h2{
+    margin-bottom:10px;
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.letter-wrapper{
+    position:relative;
+
+    width:min(88vw,330px);
+    height:220px;
+
+    margin:45px auto 15px;
+
+    perspective:1000px;
+}
+
+.envelope{
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    transform-style:preserve-3d;
+}
+
+
+/* belakang */
+
+.env-back{
+    position:absolute;
+    inset:0;
+
+    border-radius:8px;
+
+    background:linear-gradient(145deg,#f5c5cc,#e5a5b0);
+
+    box-shadow:0 20px 45px rgba(130,70,80,.18);
+}
+
+
+/* surat */
+
+.letter{
+    position:absolute;
+
+    left:6%;
+    bottom:5%;
+
+    width:88%;
+    height:90%;
+
+    background:#fffdf8;
+
+    border-radius:5px;
+
+    z-index:2;
+
+    overflow:hidden;
+
+    transform:translateY(20px);
+
+    transition:1s cubic-bezier(.22,1,.36,1);
+
+    box-shadow:0 8px 20px rgba(100,60,60,.12);
+}
+
+.letter-content{
+    height:100%;
+
+    padding:20px;
+
+    overflow-y:auto;
+
+    text-align:left;
+}
+
+.letter-content p{
+    font-size:12px;
+    line-height:1.65;
+
+    margin-bottom:10px;
+
+    color:#69565a;
+}
+
+.letter-greeting{
+    font-size:16px !important;
+    font-weight:bold;
+
+    color:#a85d69 !important;
+}
+
+.letter-sign{
+    text-align:right;
+
+    font-style:italic;
+
+    color:#9d7077 !important;
+}
+
+.letter-end{
+    text-align:center;
+
+    font-size:10px !important;
+    letter-spacing:2px;
+
+    color:#b88b91 !important;
+}
+
+
+/* depan amplop */
+
+.env-front{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:57%;
+
+    z-index:4;
+
+    background:linear-gradient(145deg,#e8adb7,#d9909d);
+
+    clip-path:polygon(
+        0 0,
+        50% 75%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+
+/* flap */
+
+.flap{
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:66%;
+
+    z-index:5;
+
+    background:linear-gradient(145deg,#f2bbc4,#df9ba7);
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        50% 82%
+    );
+
+    transform-origin:top center;
+
+    transition:1s cubic-bezier(.22,1,.36,1);
+}
+
+
+/* OPEN */
+
+.letter-wrapper.open .flap{
+    transform:rotateX(180deg);
+
+    z-index:1;
+}
+
+.letter-wrapper.open .letter{
+    transform:translateY(-115px);
+
+    z-index:6;
+}
+
+
+/* =========================
+   FINISH
+========================= */
+
+.finish{
+    display:none;
+}
+
+.finish.show{
+    display:inline-block;
+
+    animation:appear .7s ease;
+}
+
+@keyframes appear{
+
+    from{
+        opacity:0;
+        transform:translateY(15px) scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+
+/* =========================
+   FINISHED SCREEN
+========================= */
+
+.finished-screen{
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:30px;
+
+    text-align:center;
+
+    background:
+        radial-gradient(circle,#fffdfd,#fff0f3,#fbe7e8);
+}
+
+.finished-heart{
+    font-size:90px;
+
+    color:#d98595;
+
+    animation:heartbeat 1.8s infinite;
+}
+
+.finished-screen h1{
+    margin-top:15px;
+
+    font-size:clamp(30px,8vw,48px);
+}
+
+.finished-screen p{
+    font-size:16px;
+}
+
+.finished-screen span{
+    color:#9c7479;
+    font-style:italic;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .page{
+        padding:65px 20px;
+    }
+
+    p{
+        font-size:16px;
+        line-height:1.85;
+    }
+
+    .cards{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card{
+        width:min(100%,330px);
+    }
+
+    .may-buttons{
+        flex-direction:column;
+    }
+
+    .boat{
+        font-size:75px;
+    }
+
+    .letter-wrapper{
+        width:300px;
+        height:205px;
+    }
+
+    .letter-wrapper.open .letter{
+        transform:translateY(-100px);
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- MUSIK -->
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
+<div class="progress" id="progress">01 / 20</div>
+
+
+<!-- =========================
+     PAGE 1
+========================= -->
+
+<section class="page active" id="page1">
+
+    <div class="envelope-icon">💌</div>
+
+    <span class="small-title">A LITTLE SOMETHING</span>
+
+    <h1>For My Favorite Person</h1>
+
+    <p>
+        Aku punya sesuatu buat abang...
+        tapi jangan ketawa dulu yaa 😭
+    </p>
+
+    <p class="signature">
+        — Hilwa
+    </p>
+
+    <button onclick="start()">
+        Buka dulu yaa 💌
+    </button>
+
+</section>
+
+
+<!-- PAGE 2 -->
+
+<section class="page" id="page2">
+
+    <div class="big-heart">♡</div>
+
+    <span class="small-title">CHAPTER 01</span>
+
+    <h2>Bang, dengerin aku sebentar yaa...</h2>
+
+    <p>
+        Jangan kabur dulu 😭
+    </p>
+
+    <p>
+        Aku cuma mau cerita sesuatu yang
+        selama ini susah aku sampaikan lewat chat.
+    </p>
+
+    <p class="highlight">
+        Jadi tolong dibaca sampai habis yaa. 🥺
+    </p>
+
+    <button onclick="next()">Dengerin dulu yaa →</button>
+    <button class="back" onclick="back()">← Eh, balik dulu</button>
+
+</section>
+
+
+<!-- PAGE 3 -->
+
+<section class="page" id="page3">
+
+    <div class="big-heart">♡</div>
+
+    <span class="small-title">THE PLOT TWIST</span>
+
+    <h2>
+        Sebenarnya aku nggak pernah
+        berniat mencari seseorang.
+    </h2>
+
+    <p>
+        Aku awalnya main Speaky cuma karena
+        mau sedikit membantu temanku stalking seseorang. 😭
+    </p>
+
+    <div class="card">
+
+        <span>👀</span>
+
+        <h3>Plot twist...</h3>
+
+        <p>
+            Yang malah menemukan seseorang
+            ternyata aku sendiri.
+        </p>
+
+    </div>
+
+    <button onclick="next()">Terus ketemu siapa? →</button>
+    <button class="back" onclick="back()">← Aku mau balik</button>
+
+</section>
+
+
+<!-- PAGE 4 -->
+
+<section class="page" id="page4">
+
+    <div class="big-heart">♡</div>
+
+    <span class="small-title">THE ANSWER</span>
+
+    <h1>Abang.</h1>
+
+    <p>
+        Dari niat awal yang bahkan bukan buat
+        mencari siapa-siapa...
+    </p>
+
+    <p class="highlight">
+        aku malah menemukan seseorang
+        yang akhirnya jadi spesial buatku.
+    </p>
+
+    <button onclick="next()">Lanjut yaa, Bang →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 5 -->
+
+<section class="page" id="page5">
+
+    <span class="small-title">BEFORE YOU</span>
+
+    <h2>Sebelum kenal abang...</h2>
+
+    <p>
+        Aku sebenarnya masih berusaha move on
+        dari crush-ku yang dulu.
+    </p>
+
+    <p>
+        Sampai suatu hari dia kembali menghubungiku
+        lewat Instagram.
+    </p>
+
+    <p> Tapi lucunya...</p>
+
+    <h3 class="highlight">
+        rasanya sudah hambar.
+    </h3>
+
+    <p>
+        Aku malah merasa lebih senang
+        ngobrol sama abang. 😭
+    </p>
+
+    <button onclick="next()">Hehe, lanjut →</button>
+    <button class="back" onclick="back()">← Balik dulu</button>
+
+</section>
+
+
+<!-- PAGE 6 -->
+
+<section class="page" id="page6">
+
+    <span class="small-title">A LITTLE CONFESSION</span>
+
+    <h2>Kenapa abang jadi spesial?</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <span>🌷</span>
+            <h3>Comfort</h3>
+            <p>
+                Aku merasa nyaman
+                ngobrol sama abang.
+            </p>
+        </div>
+
+        <div class="card">
+            <span>♡</span>
+            <h3>Special</h3>
+            <p>
+                Entah sejak kapan,
+                abang punya tempat sendiri.
+            </p>
+        </div>
+
+        <div class="card">
+            <span>🤍</span>
+            <h3>Care</h3>
+            <p>
+                Aku mulai benar-benar peduli.
+            </p>
+        </div>
+
+    </div>
+
+    <button onclick="next()">Masih ada lagi loh... →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 7 -->
+
+<section class="page" id="page7">
+
+    <div class="envelope-icon">💌</div>
+
+    <span class="small-title">SOMETHING YOU MAY NOT KNOW</span>
+
+    <h2>Ada satu hal yang abang mungkin nggak tahu.</h2>
+
+    <p>
+        Aku belum pernah pacaran, Bang.
+    </p>
+
+    <p>
+        Aku memang pernah ngobrol dengan
+        banyak orang di Speaky.
+    </p>
+
+    <p>
+        Tapi ternyata ngobrol dengan seseorang
+        dan benar-benar menganggap dia spesial
+        itu beda.
+    </p>
+
+    <p class="highlight">
+        Dan abang itu spesial buatku.
+    </p>
+
+    <button onclick="next()">Aku lanjut cerita yaa →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 8 -->
+
+<section class="page" id="page8">
+
+    <div class="big-heart">♡</div>
+
+    <span class="small-title">A SECRET</span>
+
+    <h2>Aku mau ngaku sesuatu... 😭</h2>
+
+    <p>
+        Aku pernah stalking abang.
+    </p>
+
+    <h3> Iyaaa, aku ngaku. 😭</h3>
+
+    <p>
+        Dan dari sana aku pernah menyimpan
+        beberapa kenangan kecil tentang abang.
+    </p>
+
+    <div class="card">
+
+        <span>🙈</span>
+
+        <h3>Don't judge me</h3>
+
+        <p>
+            Jangan diketawain yaa.
+            Aku cuma pengen punya sedikit
+            kenang-kenangan.
+        </p>
+
+    </div>
+
+    <button onclick="next()">Jangan marah duluu... →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 9 -->
+
+<section class="page" id="page9">
+
+    <div class="big-heart">♡</div>
+
+    <span class="small-title">MAY I?</span>
+
+    <h2>Tapi karena itu...</h2>
+
+    <p>
+        Aku mau minta maaf.
+    </p>
+
+    <p>
+        Maaf karena pernah stalking abang
+        dan menyimpan sesuatu tanpa izin.
+    </p>
+
+    <p class="highlight">
+        Kalau abang nggak nyaman,
+        bilang aja yaa.
+    </p>
+
+    <p>
+        Aku bakal menghargai keputusan abang.
+    </p>
+
+    <div class="may-buttons">
+
+        <button
+            class="tease"
+            id="tease"
+            onclick="tease()">
+
+            Apa-apaan kamu?! 😭
+
+        </button>
+
+        <button
+            class="understand"
+            id="understand"
+            onclick="next()">
+
+            Iya iya, aku ngerti 🤍
+
+        </button>
+
+    </div>
+
+    <button class="back" onclick="back()">← Eh jangan tinggalin aku</button>
+
+    <div class="plea" id="plea"></div>
+
+</section>
+
+
+<!-- PAGE 10 -->
+
+<section class="page" id="page10">
+
+    <div class="big-heart">♡</div>
+
+    <span class="small-title">THE LITTLE THINGS</span>
+
+    <h2>Nggak semua kenangan harus berupa foto.</h2>
+
+    <p>
+        Ada percakapan yang masih aku ingat.
+    </p>
+
+    <p>
+        Ada suara yang pernah aku dengar.
+    </p>
+
+    <p>
+        Ada hari-hari ketika abang hadir
+        dan bikin hari biasa terasa sedikit berbeda.
+    </p>
+
+    <p class="highlight">
+        Kadang justru hal kecil seperti itu
+        yang paling lama tinggal.
+    </p>
+
+    <button onclick="next()">Lanjut lagi yaa →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 11 -->
+
+<section class="page" id="page11">
+
+    <span class="small-title">REALITY CHECK</span>
+
+    <h2>Tapi hidup terus berjalan.</h2>
+
+    <p>
+        Aku tahu abang punya kehidupan abang sendiri.
+    </p>
+
+    <p>
+        Aku juga punya hidupku sendiri.
+    </p>
+
+    <p>
+        Aku nggak pernah ingin mengontrol abang.
+    </p>
+
+    <p>
+        Aku juga nggak bisa memaksa abang
+        untuk selalu ada.
+    </p>
+
+    <button onclick="next()">Aku lanjut sedikit lagi yaa →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 12 -->
+
+<section class="page" id="page12">
+
+    <span class="small-title">SOMETHING CHANGED</span>
+
+    <h2>Tapi semakin lama...</h2>
+
+    <p>
+        Aku mulai merasa sesuatu berubah.
+    </p>
+
+    <p>
+        Abang terlihat seperti sudah nggak punya
+        keinginan yang sama untuk mempertahankan aku.
+    </p>
+
+    <p>
+        Mungkin aku salah.
+        <br>
+        Mungkin abang memang sibuk.
+        <br>
+        Mungkin kita sedang berada
+        di fase hidup yang berbeda.
+    </p>
+
+    <p class="highlight">
+        Aku benar-benar nggak tahu.
+    </p>
+
+    <button onclick="next()">Masih mau baca kan? 🥺 →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 13 KAPAL -->
+
+<section class="page" id="page13">
+
+    <div class="boat">⛵</div>
+
+    <span class="small-title">THE BOAT</span>
+
+    <h2>
+        Aku pernah mengira kita
+        sedang berlayar bersama.
+    </h2>
+
+    <p>
+        Tapi semakin lama aku sadar...
+    </p>
+
+    <h3 class="highlight">
+        mungkin aku terlalu sering
+        mendayung sendiri.
+    </h3>
+
+    <p>
+        Aku nggak menyalahkan abang.
+    </p>
+
+    <p>
+        Abang punya perahu abang sendiri.
+        Abang punya jalan abang sendiri.
+    </p>
+
+    <button onclick="next()">Kita lanjut berlayar dulu yaa ⛵ →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 14 -->
+
+<section class="page" id="page14">
+
+    <span class="small-title">THE REASON</span>
+
+    <h2>
+        Jadi kalau suatu hari
+        aku benar-benar pergi...
+    </h2>
+
+    <p>
+        Bukan karena aku membenci abang.
+    </p>
+
+    <p>
+        Bukan karena semua yang pernah kita lalui
+        nggak berarti.
+    </p>
+
+    <p>
+        Dan bukan karena aku tiba-tiba
+        berhenti peduli.
+    </p>
+
+    <h3 class="highlight">
+        Aku cuma mulai sadar,
+        hubungan tanpa komunikasi dan effort
+        dari dua orang itu melelahkan.
+    </h3>
+
+    <button onclick="next()">Satu lagi yaa, Bang... →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 15 -->
+
+<section class="page" id="page15">
+
+    <div class="big-heart">♡</div>
+
+    <span class="small-title">THE HARDEST PART</span>
+
+    <h2>
+        Dan mungkin ini bagian
+        yang paling susah...
+    </h2>
+
+    <p class="highlight">
+        Aku masih peduli.
+    </p>
+
+    <p>
+        Aku mungkin masih ingin abang tinggal.
+    </p>
+
+    <p>
+        Tapi aku nggak boleh memaksa abang
+        melakukan hal yang sama denganku.
+    </p>
+
+    <p class="highlight">
+        Aku juga harus belajar
+        menjaga diriku sendiri.
+    </p>
+
+    <button onclick="next()">Aku belum selesai kok... →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 16 KAPAL -->
+
+<section class="page" id="page16">
+
+    <div class="boat">⛵</div>
+
+    <h2>
+        Kalau memang saat ini abang
+        ingin berlayar sendiri...
+    </h2>
+
+    <h1>Berlayarlah.</h1>
+
+    <p>
+        Bangun hidup abang.
+        <br>
+        Kejar apa yang ingin abang kejar.
+        <br>
+        Nikmati masa muda abang.
+    </p>
+
+    <p>
+        Aku nggak ingin menjadi alasan
+        abang berhenti.
+    </p>
+
+    <p>
+        Dan kalau suatu hari nanti
+        kita memang berjodoh...
+    </p>
+
+    <p class="highlight">
+        mungkin abang akan menemukan aku lagi.
+    </p>
+
+    <button onclick="next()">Lanjut yaa... ⛵ →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 17 -->
+
+<section class="page" id="page17">
+
+    <span class="small-title">ONE LAST REQUEST</span>
+
+    <h2>
+        Jangan benci aku karena pergi.
+    </h2>
+
+    <p>
+        Aku nggak pernah membenci abang
+        karena memilih jalan abang sendiri.
+    </p>
+
+    <p>
+        Jadi aku harap abang juga nggak membenci aku
+        karena akhirnya memilih jalan yang membuatku
+        lebih tenang.
+    </p>
+
+    <p class="highlight">
+        Aku ingin mengingat abang
+        sebagai seseorang yang pernah aku syukuri.
+    </p>
+
+    <button onclick="next()">Tunggu... masih ada satu 😭 →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 18 -->
+
+<section class="page" id="page18">
+
+    <div class="big-heart">😭</div>
+
+    <h2>OKE. STOP.</h2>
+
+    <p>
+        Jangan sedih duluu 😭
+    </p>
+
+    <p>
+        Aku nggak bikin semua ini supaya
+        abang merasa bersalah.
+    </p>
+
+    <p class="highlight">
+        Aku masih ingin abang mengingatku
+        sambil tersenyum.
+    </p>
+
+    <button onclick="next()">Oke, satu terakhir yaa →</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- PAGE 19 -->
+
+<section class="page" id="page19">
+
+    <div class="envelope-icon">🌷</div>
+
+    <span class="small-title">THANK YOU</span>
+
+    <h2>Thank you, Bang.</h2>
+
+    <p>
+        Terima kasih karena pernah hadir.
+    </p>
+
+    <p>
+        Terima kasih karena pernah membuat
+        hari-hariku terasa berbeda.
+    </p>
+
+    <p>
+        Terima kasih karena pernah menjadi
+        seseorang yang ingin aku kenal lebih jauh.
+    </p>
+
+    <p>
+        Terima kasih karena pernah menjadi
+        bagian dari masa mudaku.
+    </p>
+
+    <p class="highlight">
+        my favorite person.
+    </p>
+
+    <button onclick="next()">Baca yang terakhir yaa... 💌</button>
+    <button class="back" onclick="back()">← Balik</button>
+
+</section>
+
+
+<!-- =========================
+     PAGE 20
+========================= -->
+
+<section class="page final-page" id="page20">
+
+    <span class="small-title">THE LAST LETTER</span>
+
+    <h2>Sebelum abang pergi...</h2>
+
+    <div class="letter-wrapper" id="letterWrapper">
+
+        <div class="envelope">
+
+            <div class="env-back"></div>
+
+            <div class="letter">
+
+                <div class="letter-content">
+
+                    <p class="letter-greeting">
+                        Untuk abang,
+                    </p>
+
+                    <p>
+                        Terima kasih karena pernah hadir
+                        dan menjadi bagian dari cerita kecil
+                        dalam hidupku.
+                    </p>
+
+                    <p>
+                        Mungkin kita nggak tahu cerita ini
+                        akan berakhir di mana.
+                        Tapi aku tetap bersyukur
+                        pernah mengenal abang.
+                    </p>
+
+                    <p>
+                        Kalau suatu hari kita benar-benar
+                        berjalan ke arah yang berbeda,
+                        aku harap nggak ada kebencian
+                        yang tersisa.
+                    </p>
+
+                    <p class="highlight">
+                        Aku nggak menyesal pernah mengenal abang.
+                    </p>
+
+                    <p>
+                        Jaga diri baik-baik, Bang.
+                        Semoga jalan yang abang pilih
+                        membawa abang ke tempat yang baik.
+                    </p>
+
+                    <p class="letter-sign">
+                        — Hilwa 🌷
+                    </p>
+
+                    <p class="letter-end">
+                        always, without hate.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="env-front"></div>
+
+            <div class="flap"></div>
+
+        </div>
+
+    </div>
+
+
+    <button
+        id="openLetter"
+        onclick="openLetter()">
+
+        Buka suratnyaa 💌
+
+    </button>
+
+
+    <button
+        id="finish"
+        class="finish"
+        onclick="finish()">
+
+        Udah yaa... makasih udah baca 🤍
+
+    </button>
+
+</section>
+
+
+<script>
+
+/* =========================
+   VARIABLES
+========================= */
+
+let current=1;
+
+const total=20;
+
+let teaseCount=0;
+
+
+/* =========================
+   MUSIC
+========================= */
+
+const music=document.getElementById("music");
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function updateProgress(){
+
+    document.getElementById("progress").textContent=
+        String(current).padStart(2,"0")
+        +" / "+
+        String(total).padStart(2,"0");
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+function start(){
+
+    if(music){
+
+        music.volume=.45;
+
+        music.play().catch(()=>{});
+
+    }
+
+    next();
+
+}
+
+
+/* =========================
+   NEXT
+========================= */
+
+function next(){
+
+    if(current>=total)return;
+
+    const oldPage=document.getElementById("page"+current);
+
+    const newPage=document.getElementById("page"+(current+1));
+
+    if(!oldPage || !newPage)return;
+
+    oldPage.classList.remove("active");
+
+    current++;
+
+    newPage.classList.add("active");
+
+    updateProgress();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+function back(){
+
+    if(current<=1)return;
+
+    const oldPage=document.getElementById("page"+current);
+
+    const previous=document.getElementById("page"+(current-1));
+
+    if(!oldPage || !previous)return;
+
+    oldPage.classList.remove("active");
+
+    current--;
+
+    previous.classList.add("active");
+
+    updateProgress();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   MAY I GAME
+========================= */
+
+const messages=[
+
+    "Bang pleaseee 😭",
+
+    "Dengerin duluuu 🥺",
+
+    "Jangan marah donggg 😭",
+
+    "Please jangan pergi duluu 🙏🏻",
+
+    "Aku belum selesai cerita 😭",
+
+    "Bukan begitu maksudnyaaa 🥺",
+
+    "Abang tunggu dulu 😭🤍",
+
+    "Aku cuma mau bilang sesuatuu 😭",
+
+    "Pleaseee, sekali ini aja 🥺",
+
+    "Oke oke aku minta maaf 😭🙏🏻"
+
+];
+
+
+function tease(){
+
+    teaseCount++;
+
+    const teaseButton=
+        document.getElementById("tease");
+
+    const understandButton=
+        document.getElementById("understand");
+
+    const plea=
+        document.getElementById("plea");
+
+
+    plea.textContent=
+        messages[
+            Math.floor(
+                Math.random()*messages.length
+            )
+        ];
+
+
+    plea.classList.remove("show");
+
+    void plea.offsetWidth;
+
+    plea.classList.add("show");
+
+
+    const scale=
+        Math.min(
+            1+(teaseCount*.17),
+            4.2
+        );
+
+
+    understandButton.style.transform=
+        `scale(${scale})`;
+
+
+    if(teaseCount>=7){
+
+        understandButton.style.zIndex=50;
+
+    }
+
+
+    if(teaseCount>=11){
+
+        understandButton.style.transform=
+            "scale(5.5)";
+
+        teaseButton.style.opacity=".25";
+
+    }
+
+}
+
+
+/* =========================
+   OPEN LETTER
+========================= */
+
+function openLetter(){
+
+    const wrapper=
+        document.getElementById("letterWrapper");
+
+    const openButton=
+        document.getElementById("openLetter");
+
+    const finishButton=
+        document.getElementById("finish");
+
+
+    wrapper.classList.add("open");
+
+    openButton.style.display="none";
+
+
+    setTimeout(()=>{
+
+        finishButton.classList.add("show");
+
+    },900);
+
+}
+
+
+/* =========================
+   FINISH
+========================= */
+
+function finish(){
+
+    document.body.innerHTML=`
+
+        <div class="finished-screen">
+
+            <div class="finished-heart">
+                ♡
+            </div>
+
+            <h1>
+                Thank you for reading.
+            </h1>
+
+            <p>
+                That's the end of my little story. 🌷
+            </p>
+
+            <span>
+                — Hilwa
+            </span>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function createHeart(){
+
+    const heart=
+        document.createElement("div");
+
+    heart.className="heart";
+
+    heart.textContent=
+        Math.random()>.5
+        ?"♡"
+        :"♥";
+
+    heart.style.left=
+        Math.random()*100+"vw";
+
+    heart.style.fontSize=
+        10+Math.random()*16+"px";
+
+    heart.style.animationDuration=
+        7+Math.random()*6+"s";
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },14000);
+
+}
+
+setInterval(createHeart,1200);
+
+
+/* =========================
+   INIT
+========================= */
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
